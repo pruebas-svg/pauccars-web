@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Grupo Pauccar's | El carro usado que te enamora — Cali, Colombia</title>
+  <meta name="description" content="+56 vehículos multimarca certificados en Cali. Peritaje de admisión, técnica y antecedentes. Financiación ágil desde 1.3% y atención personalizada. 3 sedes.">
+  <meta name="keywords" content="carros usados Cali, vehículos usados Cali, autos certificados, peritaje vehicular, financiación carros Cali, Grupo Pauccar's">
+  <meta name="theme-color" content="#07090F">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="misEstilos.css" rel="stylesheet">
+  <link href="carousel-styles.css" rel="stylesheet">
+  <link href="responsive-fixes.css" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+<a id="inicio" style="position:absolute;top:0;left:0;pointer-events:none;"></a>
+<header class="header">
+  <div class="header-container">
+    <a href="#inicio" class="logo">
+      <img src="Imagenes/pau.png" alt="Grupo Pauccar's" class="logo-img">
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#inicio" class="active">Inicio</a>
+      <a href="#vehiculos">Vehículos</a>
+      <a href="#financiamiento">Financiamiento</a>
+      <a href="#ferias">Ferias</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-btns">
+      <a href="#vehiculos" class="btn-ver-vehiculos">VER VEHÍCULOS</a>
+      <a href="https://wa.me/573206888120?text=Hola%20Pauccar%27s%2C%20quiero%20información" class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> WHATSAPP
+      </a>
+    </div>
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-neon-lines"></div>
+  <div class="hero-accent-bar"></div>
+
+  <div class="container">
+    <div class="hero-left">
+      <div class="hero-financing-badge">
+        <i class="fas fa-shield-alt"></i> FINANCIACIÓN ÁGIL, SEGURA Y RÁPIDA
+      </div>
+      <h1 class="hero-title">
+        <span class="line1">ENCUENTRA TU</span>
+        <span class="line2">PRÓXIMO CARRO</span>
+        <span class="line3">con confianza</span>
+      </h1>
+      <p class="hero-sub">
+        Vehículos certificados con peritaje técnico,<br>financiación fácil y atención personalizada.
+      </p>
+      <div class="hero-ctas">
+        <a href="#vehiculos" class="btn-hero-primary">
+          <i class="fas fa-car"></i> VER VEHÍCULOS
+        </a>
+        <a href="https://wa.me/573206888120" class="btn-hero-secondary" target="_blank">
+          <i class="fab fa-whatsapp"></i> ESCRÍBENOS
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-paula-scene">
+        <div class="paula-smoke"></div>
+        <div class="paula-smoke paula-smoke-2"></div>
+        <div class="paula-logo-bg"><img src="" alt="" draggable="false"></div>
+        <div class="paula-neon-line paula-neon-left"></div>
+        <div class="paula-photo-wrap">
+          <img src="Imagenes/Puala-cardenas.png"
+               alt="Paula Cárdenas — Fundadora Grupo Pauccar's"
+               class="paula-photo" loading="eager">
+          <div class="paula-photo-fade"></div>
+        </div>
+        <div class="paula-firma-wrap">
+          <span class="paula-firma-script">Paula Cárdenas</span>
+          <span class="paula-firma-linea"></span>
+          <span class="paula-firma-cargo">FUNDADORA PAUCCARS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats barra inferior -->
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">+56</span><span class="hero-stat-lbl">Vehículos disponibles</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-lbl">Sedes en Cali</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">1.3%</span><span class="hero-stat-lbl">Tasa desde</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">72</span><span class="hero-stat-lbl">Meses de financiación</span></div>
+  </div>
+</section>
+
+<!-- BUSCADOR -->
+<section class="search-section" id="buscador">
+  <div class="search-inner">
+    <div class="search-top">
+      <div class="search-title"><i class="fas fa-search"></i> BUSCA TU VEHÍCULO IDEAL</div>
+      <div class="search-action-btns">
+        <button class="btn-buscar" onclick="applyFilters()"><i class="fas fa-search"></i> BUSCAR</button>
+        <button class="btn-presupuesto" onclick="document.getElementById('financiamiento').scrollIntoView({behavior:'smooth'})"><i class="fas fa-calculator"></i> PRESUPUESTO</button>
+        <button class="btn-limpiar" onclick="resetFilters()"><i class="fas fa-redo"></i> LIMPIAR</button>
+      </div>
+    </div>
+    <div class="filters-row">
+      <div class="filter-group">
+        <label class="filter-label">Tipo de vehículo</label>
+        <select id="filterType">
+          <option value="">Todos los tipos</option>
+          <option value="sedan">Sedán</option>
+          <option value="suv">SUV / Camioneta</option>
+          <option value="hatchback">Hatchback</option>
+          <option value="pickup">Pickup</option>
+          <option value="coupe">Coupé / Deportivo</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Marca</label>
+        <select id="filterBrand">
+          <option value="">Todas las marcas</option>
+          <option>Chevrolet</option><option>Renault</option><option>Mazda</option>
+          <option>Toyota</option><option>Nissan</option><option>Hyundai</option>
+          <option>Kia</option><option>Volkswagen</option><option>Ford</option>
+          <option>Honda</option><option>Suzuki</option><option>Mitsubishi</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Modelo / Línea</label>
+        <input type="text" id="filterModel" placeholder="Ej: Mazda CX-5">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Año</label>
+        <div class="year-input-group">
+          <button type="button" class="year-btn" onclick="decreaseYear()">−</button>
+          <input type="number" id="filterYear" placeholder="Cualquier año" min="2000" max="2026">
+          <button type="button" class="year-btn" onclick="increaseYear()">+</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">KM Máximo</label>
+        <select id="filterKm">
+          <option value="">Cualquier km</option>
+          <option value="10000">Menos 10,000 km</option>
+          <option value="30000">Menos 30,000 km</option>
+          <option value="50000">Menos 50,000 km</option>
+          <option value="80000">Menos 80,000 km</option>
+          <option value="120000">Menos 120,000 km</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Combustible</label>
+        <select id="filterFuel">
+          <option value="">Todos</option>
+          <option value="gasolina">Gasolina</option>
+          <option value="diesel">Diesel</option>
+          <option value="hibrido">Híbrido</option>
+          <option value="electrico">Eléctrico</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEHÍCULOS -->
+<section class="vehicles-section" id="vehiculos">
+  <div class="container">
+    <div class="vehicles-header">
+      <div>
+        <h2 class="vehicles-title">VEHÍCULOS <span>DISPONIBLES</span></h2>
+        <p class="vehicles-count" id="resultsCount">Cargando vehículos...</p>
+      </div>
+      <div class="sort-group">
+        <span class="sort-label">Ordenar por:</span>
+        <select class="sort-select" id="sortBy" onchange="sortVehicles(this.value)">
+          <option value="newest">Más recientes</option>
+          <option value="price-low">Menor precio</option>
+          <option value="price-high">Mayor precio</option>
+          <option value="km-low">Menor km</option>
+        </select>
+      </div>
+    </div>
+    <div class="vehicles-grid" id="vehiclesGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <i class="fas fa-car-crash"></i>
+      <h3>No encontramos vehículos</h3>
+      <p>Prueba ajustando los filtros de búsqueda</p>
+    </div>
+    <div class="cta-search-bar">
+      <div class="cta-search-icon"><i class="fas fa-gem"></i></div>
+      <div class="cta-search-text">
+        <strong>¿No encuentras lo que buscas?</strong>
+        <span>Te ayudamos a encontrar el vehículo perfecto para ti.</span>
+      </div>
+      <a href="https://wa.me/573206888120?text=Hola%20Pauccar%27s%2C%20busco%20un%20vehículo%20específico" target="_blank" class="btn-cta-busqueda">
+        SOLICITAR BÚSQUEDA PERSONALIZADA <span>›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><div class="trust-icon"><i class="fas fa-shield-alt"></i></div><div class="trust-item-text"><strong>PERITAJE DE ADMISIÓN</strong><span>Estructura y antecedentes de procedencia</span></div></div>
+    <div class="trust-item"><div class="trust-icon"><i class="fas fa-award"></i></div><div class="trust-item-text"><strong>VEHÍCULOS CERTIFICADOS</strong><span>Técnica y antecedentes verificados</span></div></div>
+    <div class="trust-item"><div class="trust-icon"><i class="fas fa-file-alt"></i></div><div class="trust-item-text"><strong>DOCUMENTACIÓN AL DÍA</strong><span>100% legal y sin pendientes</span></div></div>
+    <div class="trust-item"><div class="trust-icon"><i class="fas fa-headset"></i></div><div class="trust-item-text"><strong>SOPORTE CONTINUO</strong><span>Atención personalizada 7 días</span></div></div>
+  </div>
+</div>
+
+<!-- COMPRAR / VENDER -->
+<section class="buy-sell-section">
+  <div class="container">
+    <h2 class="buy-sell-title">¿Qué quieres <span>hacer hoy</span>?</h2>
+    <p class="buy-sell-sub">Estamos aquí para ayudarte, ya sea que busques comprar o vender tu vehículo.</p>
+    <div class="buy-sell-grid">
+      <div class="buy-sell-card buy-card">
+        <i class="fas fa-car bsc-icon"></i>
+        <h3 class="bsc-title">TE AYUDAMOS A COMPRAR</h3>
+        <p class="bsc-desc">Cuéntanos qué tipo de vehículo necesitas y nuestro equipo te asesorará para encontrar la mejor opción dentro de tu presupuesto.</p>
+        <div class="bsc-form">
+          <input type="text" class="bsc-input" placeholder="Tu nombre completo">
+          <input type="tel" class="bsc-input" placeholder="Tu WhatsApp">
+          <input type="text" class="bsc-input" placeholder="¿Qué vehículo buscas?">
+          <select class="bsc-input" style="background:#141828;color:#fff;">
+            <option value="">Presupuesto aproximado</option>
+            <option>Menos de $30.000.000</option>
+            <option>$30M – $60M</option>
+            <option>$60M – $100M</option>
+            <option>Más de $100M</option>
+          </select>
+        </div>
+        <button class="btn-bsc-buy" onclick="sendBuyRequest()"><i class="fab fa-whatsapp"></i> Quiero comprar un carro</button>
+      </div>
+      <div class="buy-sell-card sell-card">
+        <i class="fas fa-hand-holding-usd bsc-icon"></i>
+        <h3 class="bsc-title">TE AYUDAMOS A VENDER</h3>
+        <p class="bsc-desc">Publica tu vehículo con nosotros y llega a miles de compradores potenciales. Manejamos todo el proceso por ti.</p>
+        <div class="bsc-form">
+          <input type="text" class="bsc-input" placeholder="Tu nombre completo">
+          <input type="tel" class="bsc-input" placeholder="Tu WhatsApp">
+          <input type="text" class="bsc-input" placeholder="Marca, modelo y año">
+          <input type="number" class="bsc-input" placeholder="Precio esperado ($)">
+        </div>
+        <button class="btn-bsc-sell" onclick="sendSellRequest()"><i class="fab fa-whatsapp"></i> Quiero vender mi carro</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="about-section" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-paula-scene">
+        <div class="about-paula-bg"></div>
+        <div class="about-paula-smoke"></div>
+        <div class="about-paula-smoke about-paula-smoke-2"></div>
+        <div class="about-paula-logo-bg"><img src="pau.png" alt=""></div>
+        <div class="about-neon-v about-neon-v1"></div>
+        <div class="about-neon-v about-neon-v2"></div>
+        <div class="about-neon-h"></div>
+        <div class="about-paula-photo-wrap">
+          <img src="Imagenes/Pauccars-foto-paula-moto.webp" alt="Paula Cárdenas — Fundadora Grupo Pauccar's" class="about-paula-photo">
+          <div class="about-paula-photo-fade"></div>
+        </div>
+        <div class="about-firma-wrap">
+          <span class="about-firma-script">Paula Cárdenas</span>
+          <span class="about-firma-cargo">FUNDADORA GRUPO PAUCCAR'S</span>
+        </div>
+
+      </div>
+      <div class="about-content">
+        <span class="section-eyebrow">Nuestra historia</span>
+        <h2 class="section-title">El <span>carro usado</span><br>que te <span class="gold">enamora</span></h2>
+        <p class="about-text">Esta historia dio inició en el sector automotriz en el Concesionario Chevrolet Yanaconas Motor, durante cerca de doce años.</p>
+        <p class="about-text">Gracias a la confianza depositada por nuestros clientes a lo largo de ese tiempo, surgió la oportunidad de consolidar un proyecto propio. Así nace Grupo Pauccar's, un concesionario enfocado en ofrecer un servicio directo y transparente en los procesos de consignación, compra y venta de vehículos usados.</p>
+        <p class="about-text">A lo largo de nuestra trayectoria, Grupo Pauccar's ha construido relaciones de confianza con numerosas familias, consolidándose como una empresa cercana a sus clientes.</p>
+        <p class="about-text">El equipo está conformado por profesionales que, en su mayoría, compartieron experiencia previa en el sector y hoy conforman un solo concesionario unido por un propósito común.</p>
+        <p class="about-text">Nuestro compromiso es ofrecer a cada cliente las mejores opciones al momento de adquirir un vehículo usado.</p>
+        <p class="about-text">Contamos con taller propio, donde cada vehículo es sometido a una revisión exhaustiva antes y durante el proceso de venta, para la entrega de un producto confiable y la satisfacción total de nuestros clientes. 🚗❤️</p>
+        <div class="about-stats">
+          <div class="about-stat"><span class="about-stat-num">+56</span><span class="about-stat-lbl">Vehículos disponibles</span></div>
+          <div class="about-stat"><span class="about-stat-num">3</span><span class="about-stat-lbl">Sedes en Cali</span></div>
+          <div class="about-stat"><span class="about-stat-num">+500</span><span class="about-stat-lbl">Familias felices</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LÍNEA DIVISORIA -->
+<div class="section-divider-wrap">
+  <div class="section-divider-particles" id="dividerParticles"></div>
+  <div class="section-divider-line"></div>
+</div>
+
+<!-- ASESORES COMERCIALES -->
+<section class="advisors-section" id="asesores">
+  <div class="container">
+    <span class="section-eyebrow">Habla con nosotros</span>
+    <h2 class="section-title">Nuestros <span class="gold">asesores comerciales</span></h2>
+    <div class="advisors-grid" id="advisorsGrid">
+      <div class="advisor-card">
+        <div class="advisor-photo-wrap"><i class="fas fa-user"></i></div>
+        <div class="advisor-name">Cargando...</div>
+        <div class="advisor-role">Asesor Comercial</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIAMIENTO -->
+<section class="financing-section" id="financiamiento">
+  <div class="container">
+    <span class="section-eyebrow" style="text-align:center;display:block;">Sin letra pequeña</span>
+    <h2 class="section-title section-title-center">Simula tu <span>financiación</span></h2>
+    <div class="financing-grid">
+      <div class="simulator-card">
+        <h3 class="sim-title"><i class="fas fa-calculator"></i> Calculadora de cuota</h3>
+        <p class="sim-note">Tasas <span>desde 1.3% mensual</span>, sujeto a perfil crediticio. Hasta 72 meses.</p>
+        <div class="sim-field">
+          <label>Valor del vehículo</label>
+          <input type="number" id="simPrice" placeholder="Ej: 50000000" oninput="calcularCuota()">
+        </div>
+        <div class="sim-field">
+          <label>Cuota inicial</label>
+          <input type="number" id="simInitial" placeholder="Ej: 10000000" oninput="calcularCuota()">
+        </div>
+        <div class="sim-field">
+          <label>Tasa mensual: <span id="rateLabel">1.5%</span></label>
+          <div class="rate-slider">
+            <input type="range" id="simRate" min="1.3" max="1.8" step="0.1" value="1.5" oninput="updateRate();calcularCuota()">
+            <span class="rate-display" id="rateDisplay">1.5%</span>
+          </div>
+        </div>
+        <div class="sim-field">
+          <label>Plazo</label>
+          <select id="simMonths" onchange="calcularCuota()">
+            <option value="12">12 meses</option><option value="24">24 meses</option>
+            <option value="36">36 meses</option><option value="48">48 meses</option>
+            <option value="60" selected>60 meses</option><option value="72">72 meses</option>
+          </select>
+        </div>
+        <div class="sim-result" id="simResult">
+          <span class="sim-result-cuota" id="simCuota">$0</span>
+          <span class="sim-result-label">Cuota mensual estimada</span>
+          <p class="sim-result-detail" id="simDetail"></p>
+        </div>
+        <button class="btn-calcular" onclick="calcularCuota()"><i class="fas fa-calculator"></i> Calcular cuota</button>
+        <button class="btn-solicitar-credito" onclick="solicitarCredito()"><i class="fas fa-file-alt"></i> Solicitar crédito formalmente</button>
+      </div>
+      <div class="fin-benefits">
+        <div class="fin-benefit-card"><div class="fin-benefit-icon"><i class="fas fa-bolt"></i></div><div class="fin-benefit-text"><strong>Aprobación rápida</strong><p>Respuesta en menos de 24 horas.</p></div></div>
+        <div class="fin-benefit-card"><div class="fin-benefit-icon"><i class="fas fa-percentage"></i></div><div class="fin-benefit-text"><strong>Tasas competitivas</strong><p>Desde 1.3% mensual. Sin costos ocultos.</p></div></div>
+        <div class="fin-benefit-card"><div class="fin-benefit-icon"><i class="fas fa-calendar-check"></i></div><div class="fin-benefit-text"><strong>Hasta 72 meses</strong><p>Tu cuota se ajusta a tu bolsillo.</p></div></div>
+        <div class="fin-benefit-card"><div class="fin-benefit-icon"><i class="fas fa-users"></i></div><div class="fin-benefit-text"><strong>Asesoría personalizada</strong><p>Te guiamos hasta que tengas las llaves.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FERIAS -->
+<section class="events-section" id="ferias">
+  <div class="container">
+    <span class="section-eyebrow" style="text-align:center;display:block;">En el mundo automotriz</span>
+    <h2 class="section-title" style="text-align:center;margin-bottom:40px;">Ferias y <span>eventos</span></h2>
+    <div class="events-grid">
+      <div class="events-placeholder">
+        <i class="fas fa-camera"></i>
+        <p><strong style="color:#fff;">¡Muy pronto aquí verás nuestros eventos!</strong><br>
+        Participamos en ExpoCarros y otras ferias de Cali.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews-section" id="clientes">
+  <div class="container">
+    <div class="reviews-hero">
+      <span class="section-eyebrow">Lo que dicen nuestros clientes</span>
+      <span class="reviews-cta-text">Tú también puedes hacer parte de la experiencia</span>
+      <p style="color:rgba(255,255,255,0.5);font-size:15px;">Más de 500 familias ya encontraron su carro ideal con Pauccar's</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Excelente servicio, Paula y su equipo me asesoraron en todo momento. El proceso fue rápido, transparente y sin complicaciones. ¡Mi Mazda CX-5 es un sueño!"</p>
+        <div class="review-author"><strong>Carolina Gómez</strong><span>Compradora verificada · Cali</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Super felices con nuestro BMW. La financiación fue aprobada súper rápido y el carro estaba impecable. Sin duda volvemos cuando necesitemos el próximo."</p>
+        <div class="review-author"><strong>Miguel Rojas</strong><span>Comprador verificado · Cali</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Me explicaron todo con paciencia, me ayudaron con el crédito y el carro llegó certificado y en perfecto estado. Una experiencia muy diferente a otras agencias. ¡100% recomendado!"</p>
+        <div class="review-author"><strong>Andrea Martínez</strong><span>Compradora verificada · Cali</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://wa.me/573206888120?text=Hola%20Pauccar%27s%2C%20quiero%20compartir%20mi%20experiencia" target="_blank" class="btn-hero-secondary" style="display:inline-flex;">
+        <i class="fas fa-star"></i> Comparte tu experiencia
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact-section" id="contacto">
+  <div class="container">
+    <span class="section-eyebrow" style="text-align:center;display:block;">Visítanos</span>
+    <h2 class="section-title" style="text-align:center;margin-bottom:40px;">Nuestras <span>3 sedes</span> en Cali</h2>
+    <!-- SEDES: info + mapa lado a lado por cada sede -->
+    <div class="sedes-nueva">
+
+      <!-- Sede 1 -->
+      <div class="sede-fila">
+        <div class="sede-card">
+          <span class="sede-num">Sede 1</span>
+          <h3 class="sede-name">Los Cambulos</h3>
+          <div class="sede-info">
+            <div class="sede-row"><i class="fas fa-user-tie"></i><span>Gerente Comercial: Paula Cárdenas</span></div>
+            <div class="sede-row"><i class="fas fa-map-marker-alt"></i><span>Cl 9 C #42-66, Los Cambulos, Cali</span></div>
+            <div class="sede-row"><i class="fab fa-whatsapp"></i><span><a href="https://wa.me/573206888120" target="_blank">320 688 8120</a></span></div>
+            <div class="sede-row"><i class="fas fa-clock"></i><span>Lunes a sábado: 8:00 AM – 5:00 PM<br>Domingos: Cerrado</span></div>
+          </div>
+        </div>
+        <div class="sede-mapa">
+          <iframe src="https://www.google.com/maps?q=Cl.+9C+%2342-66,+Los+Cambulos,+Cali,+Colombia&output=embed"
+            width="100%" height="100%" style="border:0;display:block;border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- Sede 2 -->
+      <div class="sede-fila">
+        <div class="sede-card">
+          <span class="sede-num">Sede 2</span>
+          <h3 class="sede-name">Calima</h3>
+          <div class="sede-info">
+            <div class="sede-row"><i class="fas fa-user-tie"></i><span>Líder Comercial: Mónica Alexandra Ibagos</span></div>
+            <div class="sede-row"><i class="fas fa-map-marker-alt"></i><span>Centro Comercial Calima, Cali</span></div>
+            <div class="sede-row"><i class="fab fa-whatsapp"></i><span><a href="https://wa.me/573114449637" target="_blank">311 444 9637</a></span></div>
+            <div class="sede-row"><i class="fas fa-clock"></i><span>Lunes a viernes: 9:00 AM – 7:00 PM<br>Sábados y domingos: 10:00 AM – 6:00 PM</span></div>
+          </div>
+        </div>
+        <div class="sede-mapa">
+          <iframe src="https://www.google.com/maps?q=Centro+Comercial+Calima,+Cali,+Colombia&output=embed"
+            width="100%" height="100%" style="border:0;display:block;border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- Sede 3 -->
+      <div class="sede-fila">
+        <div class="sede-card">
+          <span class="sede-num">Sede 3</span>
+          <h3 class="sede-name">Pasoancho</h3>
+          <div class="sede-info">
+            <div class="sede-row"><i class="fas fa-user-tie"></i><span>Líder Comercial: Marcela Villa González</span></div>
+            <div class="sede-row"><i class="fas fa-map-marker-alt"></i><span>Avenida Pasoancho con Calle 66, Cali</span></div>
+            <div class="sede-row"><i class="fab fa-whatsapp"></i><span><a href="https://wa.me/573152751600" target="_blank">315 275 1600</a></span></div>
+            <div class="sede-row"><i class="fas fa-clock"></i><span>Lunes a sábado: 8:00 AM – 6:00 PM<br>Domingos: 9:00 AM – 2:00 PM</span></div>
+          </div>
+        </div>
+        <div class="sede-mapa">
+          <iframe src="https://www.google.com/maps?q=Avenida+Pasoancho+con+Calle+66,+Cali,+Colombia&output=embed"
+            width="100%" height="100%" style="border:0;display:block;border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Imagenes/pau.png" alt="Grupo Pauccar's" class="footer-logo">
+        <p>El carro usado que te enamora.<br>Vehículos certificados con peritaje técnico y financiación ágil en Cali, Colombia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <a href="#inicio">Inicio</a><a href="#vehiculos">Vehículos</a>
+        <a href="#financiamiento">Financiamiento</a><a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col footer-col-social">
+        <h4>Nuestras redes sociales</h4>
+        <div class="social-row">
+          <a href="https://www.facebook.com/pauccars" target="_blank" class="social-link fb"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/pauccarss" target="_blank" class="social-link ig"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/573206888120" target="_blank" class="social-link wa"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.tiktok.com/@grupopauccars" target="_blank" class="social-link tt"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p style="display:flex;align-items:flex-start;gap:8px;">
+          <i class="fas fa-map-marker-alt" style="flex-shrink:0;margin-top:3px;"></i>
+          <span>Cl 9 C #42-66, Los Cambulos, Cali</span>
+        </p>
+        <p style="display:flex;align-items:center;gap:8px;">
+          <i class="fas fa-phone" style="flex-shrink:0;"></i>
+          <a href="tel:+573206888120" style="color:inherit;text-decoration:none;">320 6888120</a>
+        </p>
+        <p style="display:flex;align-items:center;gap:8px;">
+          <i class="fab fa-whatsapp" style="flex-shrink:0;"></i>
+          <a href="https://wa.me/573206888120" style="color:inherit;text-decoration:none;">WhatsApp</a>
+        </p>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 <span>Grupo Pauccar's</span>. Todos los derechos reservados. Cali, Colombia.</p>
+      <p>El carro usado que te enamora 🚗</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/573206888120?text=Hola%20Pauccar%27s%2C%20quiero%20información" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="modal" id="vehicleModal">
+  <div class="modal-content" style="max-width:540px;">
+    <button class="modal-close-outer" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="modal" id="creditModal">
+  <div class="modal-content" style="max-width:500px;">
+    <button class="modal-close" onclick="document.getElementById('creditModal').style.display='none';document.body.style.overflow='auto';">×</button>
+    <div style="padding:32px;">
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:10px;">
+        <i style="color:#E8A800;" class="fas fa-file-alt"></i> Solicitud de Crédito
+      </h3>
+      <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:24px;">Completa el formulario y te contactaremos pronto.</p>
+      <div style="display:grid;gap:14px;">
+        <input class="bsc-input" type="text" placeholder="Nombre completo">
+        <input class="bsc-input" type="tel" placeholder="Teléfono / WhatsApp">
+        <input class="bsc-input" type="email" placeholder="Correo electrónico">
+        <input class="bsc-input" type="number" placeholder="Ingresos mensuales ($)">
+        <input class="bsc-input" type="text" placeholder="Vehículo de interés">
+
+        <select class="bsc-input" id="tipoOcupacion" onchange="toggleCamposEmpleado(this.value)">
+          <option value="" disabled selected>¿Eres empleado o independiente?</option>
+          <option value="empleado">Empleado</option>
+          <option value="independiente">Independiente</option>
+        </select>
+
+        <div id="camposEmpleado" style="display:none;flex-direction:column;gap:14px;">
+          <input class="bsc-input" id="empEmpresa" type="text" placeholder="Nombre de la empresa">
+          <input class="bsc-input" id="empCargo" type="text" placeholder="Cargo">
+          <div>
+            <label style="display:block;color:rgba(255,255,255,0.55);font-size:12px;margin-bottom:6px;font-family:'Inter',sans-serif;">Fecha de inicio de labores</label>
+            <input class="bsc-input" id="empFechaInicio" type="date">
+          </div>
+        </div>
+
+        <button class="btn-bsc-buy" onclick="enviarSolicitudCredito(this)">
+          <i class="fas fa-paper-plane"></i> Enviar solicitud
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="inventory-manager.js"></script>
+<script src="misEscript-SHEETS.js"></script>
+
+<script>
+// ================================================
+// PARTÍCULAS DORADAS — Fondo animado
+// ================================================
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    canvas.style.width  = '100vw';
+    canvas.style.height = '100vh';
+  }
+
+  // Colores: dorado brillante, azul suave, blanco tenue — como cielo estrellado
+  const COLORS = [
+    'rgba(255,215,0,',    // dorado
+    'rgba(255,210,80,',   // dorado cálido
+    'rgba(240,180,20,',   // dorado oscuro
+    'rgba(255,215,0,',    // dorado (más frecuente)
+    'rgba(255,200,50,',   // dorado medio
+    'rgba(30,144,255,',   // azul neón
+    'rgba(255,255,255,',  // blanco
+  ];
+
+  function createParticle() {
+    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    return {
+      x:     Math.random() * W,
+      y:     Math.random() * H,
+      r:     Math.random() * 2.8 + 0.6,
+      alpha: Math.random() * 0.85 + 0.3,
+      dx:    (Math.random() - 0.5) * 0.25,
+      dy:    (Math.random() - 0.5) * 0.25,
+      pulse: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.015 + 0.005,
+      color: color,
+    };
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    const count = Math.min(Math.floor((W * H) / 3500), 280);
+    for (let i = 0; i < count; i++) particles.push(createParticle());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    particles.forEach(p => {
+      p.pulse += p.speed;
+      const a = p.alpha * (0.55 + 0.45 * Math.sin(p.pulse));
+
+      // Brillo tipo estrella
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + a + ')';
+      ctx.fill();
+
+      // Destello central — tipo estrella brillante
+      if (p.r > 1.0) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 0.45, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + Math.min(a * 2.0, 1) + ')';
+        ctx.fill();
+      }
+      // Rayos de estrella en las más grandes
+      if (p.r > 1.8) {
+        ctx.save();
+        ctx.globalAlpha = a * 0.4;
+        ctx.strokeStyle = p.color + '1)';
+        ctx.lineWidth = 0.5;
+        for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 2) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + Math.cos(angle) * p.r * 2.5,
+                     p.y + Math.sin(angle) * p.r * 2.5);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      // Mover
+      p.x += p.dx;
+      p.y += p.dy;
+
+      // Rebotar en bordes
+      if (p.x < 0 || p.x > W) p.dx *= -1;
+      if (p.y < 0 || p.y > H) p.dy *= -1;
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); init(); });
+  // Asegurar que el canvas nunca bloquee scroll ni clicks
+  canvas.style.pointerEvents = 'none';
+  canvas.style.touchAction   = 'none';
+  canvas.style.userSelect    = 'none';
+  init();
+  draw();
+})();
+</script>
+</html>
